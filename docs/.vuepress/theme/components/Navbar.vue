@@ -1,33 +1,35 @@
 <template>
   <header class="navbar">
-    <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
-
-    <router-link :to="$localePath" class="home-link">
-      <img
-        class="logo"
-        v-if="$site.themeConfig.logo"
-        :src="$withBase($site.themeConfig.logo)"
-        :alt="$siteTitle"
-      >
-      <span
-        ref="siteName"
-        class="site-name"
-        v-if="$siteTitle"
-        :class="{ 'can-hide': $site.themeConfig.logo }"
-      >{{ $siteTitle }}</span>
-    </router-link>
-
-    <div
-      class="links"
-      :style="linksWrapMaxWidth ? {
+    <div class="navbar-wrap">
+      <div>
+        <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
+        <router-link :to="$localePath" class="home-link">
+          <img
+            class="logo"
+            v-if="$site.themeConfig.logo"
+            :src="$withBase($site.themeConfig.logo)"
+            :alt="$siteTitle"
+          >
+          <span
+            ref="siteName"
+            class="site-name"
+            v-if="$siteTitle"
+            :class="{ 'can-hide': $site.themeConfig.logo }"
+          >{{ $siteTitle }}</span>
+        </router-link>
+      </div>
+      <div
+        class="links"
+        :style="linksWrapMaxWidth ? {
         'max-width': linksWrapMaxWidth + 'px'
       } : {}"
-    >
-      <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="algolia"/>
-      <SearchBox
-        v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false"
-      />
-      <NavLinks class="can-hide"/>
+      >
+        <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="algolia"/>
+        <SearchBox
+          v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false"
+        />
+        <NavLinks class="can-hide"/>
+      </div>
     </div>
   </header>
 </template>
@@ -85,6 +87,11 @@ function css(el, property) {
   // null means not to return pseudo styles
   return win.getComputedStyle(el, null)[property];
 }
+// $wrap: 1248px;
+// $wrap_m: 960px;
+// $wrap_s: 750px;
+// $slide: 280px;
+// $content: 660px;
 </script>
 
 <style lang="stylus">
@@ -94,6 +101,13 @@ $navbar-horizontal-padding = 1.5rem;
 .navbar {
   padding: $navbar-vertical-padding $navbar-horizontal-padding;
   line-height: $navbarHeight - 1.4rem;
+
+  .navbar-wrap {
+    max-width: 1248px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
 
   a, span, img {
     display: inline-block;
@@ -119,7 +133,7 @@ $navbar-horizontal-padding = 1.5rem;
     background-color: white;
     white-space: nowrap;
     font-size: 0.9rem;
-    position: absolute;
+    // position: absolute;
     right: $navbar-horizontal-padding;
     top: $navbar-vertical-padding;
     display: flex;
