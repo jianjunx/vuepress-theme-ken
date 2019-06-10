@@ -1,5 +1,6 @@
 ---
 title: 2019/6/4日 Vue作者尤雨溪技在深圳术分享内容
+sidebar: auto
 permalink: /post/2019060501.html
 tags:
   - Vue
