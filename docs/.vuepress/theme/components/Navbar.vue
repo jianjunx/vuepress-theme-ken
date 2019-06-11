@@ -10,12 +10,12 @@
             :src="$withBase($site.themeConfig.logo)"
             :alt="$siteTitle"
           >
-          <!-- <span
+          <span
             ref="siteName"
             class="site-name"
-            v-if="$siteTitle"
+            v-if="$siteTitle && !$site.themeConfig.logo"
             :class="{ 'can-hide': $site.themeConfig.logo }"
-          >{{ $siteTitle }}</span> -->
+          >{{ $siteTitle }}</span>
         </router-link>
         <NavLinks class="can-hide"/>
       </div>
@@ -87,11 +87,6 @@ function css(el, property) {
   // null means not to return pseudo styles
   return win.getComputedStyle(el, null)[property];
 }
-// $wrap: 1248px;
-// $wrap_m: 960px;
-// $wrap_s: 750px;
-// $slide: 280px;
-// $content: 660px;
 </script>
 
 <style lang="stylus">
@@ -103,7 +98,7 @@ $navbar-horizontal-padding = 1.5rem;
   line-height: $navbarHeight - 1.4rem;
 
   .navbar-wrap {
-    max-width: 1248px;
+    max-width: 1110px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -116,7 +111,7 @@ $navbar-horizontal-padding = 1.5rem;
   .logo {
     height: $navbarHeight - 1.4rem;
     min-width: $navbarHeight - 1.4rem;
-    margin-right: 0.8rem;
+    margin-right: 2rem;
     vertical-align: top;
   }
 

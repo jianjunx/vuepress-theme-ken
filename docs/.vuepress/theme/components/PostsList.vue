@@ -1,18 +1,18 @@
 <template>
-  <div class="postlist">
+  <div class="plist">
     <ul>
-      <li v-for="post in pageList[pageIndex]" :key="post.key">
+      <li class="plist-list" v-for="post in pageList[pageIndex - 1]" :key="post.key">
         <span>{{post.title}}</span>
       </li>
     </ul>
-    
+    <Page :total="total" />
   </div>
 </template>
 <script>
 export default {
   name: "PostsList",
   data: () => ({
-    pageIndex: 0,
+    pageIndex: 1,
     total: 0,
     allPages: []
   }),
@@ -27,7 +27,7 @@ export default {
   watch: {
     $route: {
       handler: function(val) {
-        this.pageIndex = 0;
+        this.pageIndex = 1;
         const hash = val.hash.replace("#", "");
         if (!hash) {
           this.allPages = this.posts.pageList;
@@ -55,6 +55,10 @@ export default {
 };
 </script>
 <style lang="stylus" scoped>
-.postlist
-  margin-top 0px
+ul, li
+  list-style none 
+  margin 0
+  padding 0
+.plist
+  width 100%
 </style>
