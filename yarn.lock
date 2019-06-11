@@ -886,6 +886,13 @@
   dependencies:
     cross-spawn "^6.0.5"
 
+"@vuepress/plugin-last-updated@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.npm.taobao.org/@vuepress/plugin-last-updated/download/@vuepress/plugin-last-updated-1.0.1.tgz#227708b861939754d3c607d487dabc5b3d30a010"
+  integrity sha1-IncIuGGTl1TTxgfUh9q8Wz0woBA=
+  dependencies:
+    cross-spawn "^6.0.5"
+
 "@vuepress/plugin-nprogress@^1.0.0", "@vuepress/plugin-nprogress@^1.0.0-rc.1":
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/@vuepress/plugin-nprogress/download/@vuepress/plugin-nprogress-1.0.0.tgz#a7777a54415cb6d6025e188c40180f8ec4e2837e"
@@ -2337,6 +2344,11 @@ date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.npm.taobao.org/date-now/download/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
   integrity sha1-6vQ5/U1ISK105cx9vvIAZyueNFs=
+
+dayjs@^1.8.14:
+  version "1.8.14"
+  resolved "https://registry.npm.taobao.org/dayjs/download/dayjs-1.8.14.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdayjs%2Fdownload%2Fdayjs-1.8.14.tgz#43e4f62830c2c3342c3fcd25934dc9162dbe6f38"
+  integrity sha1-Q+T2KDDCwzQsP80lk03JFi2+bzg=
 
 de-indent@^1.0.2:
   version "1.0.2"

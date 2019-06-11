@@ -6,6 +6,15 @@ function resolve(p) {
 module.exports = {
   title: 'Jayken',
   description: '  Jayken的个人博客',
+  themeConfig: {
+    logo: 'https://cn.vuejs.org/images/logo.png',
+    nav: [
+      { text: '首页', link: '/' },
+      { text: 'BLOG', link: '/posts/' },
+      { text: 'GitHub', link: 'https://google.com' },
+    ],
+    pageSize: 10
+  },
   configureWebpack: {
     resolve: {
       alias: {

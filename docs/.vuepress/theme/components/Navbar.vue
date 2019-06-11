@@ -10,13 +10,14 @@
             :src="$withBase($site.themeConfig.logo)"
             :alt="$siteTitle"
           >
-          <span
+          <!-- <span
             ref="siteName"
             class="site-name"
             v-if="$siteTitle"
             :class="{ 'can-hide': $site.themeConfig.logo }"
-          >{{ $siteTitle }}</span>
+          >{{ $siteTitle }}</span> -->
         </router-link>
+        <NavLinks class="can-hide"/>
       </div>
       <div
         class="links"
@@ -28,7 +29,6 @@
         <SearchBox
           v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false"
         />
-        <NavLinks class="can-hide"/>
       </div>
     </div>
   </header>
