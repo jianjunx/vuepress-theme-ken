@@ -7113,7 +7113,7 @@ vuepress@^1.0.0:
 
 vuewordcloud@^18.7.11:
   version "18.7.11"
-  resolved "https://registry.npmjs.org/vuewordcloud/-/vuewordcloud-18.7.11.tgz#285ae2b6d93ac6f1da6e60141227f68a64b30f24"
+  resolved "https://registry.npm.taobao.org/vuewordcloud/download/vuewordcloud-18.7.11.tgz#285ae2b6d93ac6f1da6e60141227f68a64b30f24"
   integrity sha1-KFrittk6xvHabmAUEif2imSzDyQ=
   dependencies:
     vue "^2.5.16"

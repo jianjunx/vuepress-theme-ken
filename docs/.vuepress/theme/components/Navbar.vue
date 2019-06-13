@@ -96,12 +96,15 @@ $navbar-horizontal-padding = 1.5rem;
 .navbar {
   padding: $navbar-vertical-padding $navbar-horizontal-padding;
   line-height: $navbarHeight - 1.4rem;
+  background-color #144a74
+  box-shadow 0 0 5px rgba(0,0,0,.25)
 
   .navbar-wrap {
     max-width: 1110px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    color #fff
   }
 
   a, span, img {

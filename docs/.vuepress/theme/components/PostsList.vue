@@ -5,7 +5,6 @@
         <span>{{post.title}}</span>
       </li>
     </ul>
-    <Page :total="total" />
   </div>
 </template>
 <script>
