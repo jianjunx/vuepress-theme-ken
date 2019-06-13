@@ -126,7 +126,7 @@ export default {
   .nav-item
     position relative
     display inline-block
-    margin-left 1.5rem
+    margin-left 2rem
     line-height 2rem
     &:first-child
       margin-left 0
@@ -146,7 +146,5 @@ export default {
       color $textColor
   .nav-item > a:not(.external)
     &:hover, &.router-link-active
-      background-color #fff
-      // margin-bottom -2px
-      // border-bottom 2px solid lighten($accentColor, 8%)
+      color #ffa700       
 </style>
