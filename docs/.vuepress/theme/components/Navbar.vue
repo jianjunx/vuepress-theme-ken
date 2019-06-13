@@ -128,18 +128,27 @@ $navbar-horizontal-padding = 1.5rem;
   .links {
     padding-left: 1.5rem;
     box-sizing: border-box;
-    background-color: white;
+    background-color: transparent;
     white-space: nowrap;
     font-size: 0.9rem;
     // position: absolute;
     right: $navbar-horizontal-padding;
     top: $navbar-vertical-padding;
     display: flex;
-
+    // border 1px solid #000
+    // border-radius 6px
     .search-box {
       flex: 0 0 auto;
       vertical-align: top;
     }
+    .search-box input {
+      border-color $accentColor
+      background-color $bodyBgColor
+      &:focus {
+        border-color #ffa700
+      }
+    }
+        
   }
 }
 
