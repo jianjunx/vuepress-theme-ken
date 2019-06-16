@@ -202,3 +202,43 @@ th, td
       padding-left 0
 
 @require 'mobile.styl'
+
+
+/************** 滚动条 **************/
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: rgba(20, 74, 116, 0.2);
+  -webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  height: 5px;
+  background-color: rgba(20, 74, 116, 0.7);
+  -webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  width: 5px;
+  background-color: rgba(20, 74, 116, 0.7);
+  -webkit-border-radius: 6px;
+}
+
+/************** 流程图的滚动条 **************/
+.vuepress-flowchart {
+  overflow: auto;
+}
+
+.vssue {
+  .vssue-header-powered-by{
+      visibility: hidden;
+  }
+}
+.vssue .vssue-new-comment .vssue-new-comment-footer .vssue-current-user{
+  span{
+    display: none;
+  }
+}

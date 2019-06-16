@@ -15,30 +15,29 @@
 </template>
 <script>
 import VueWordCloud from "vuewordcloud";
+import PostBus from "../util/post-bus";
 
 export default {
   name: "TagCloud",
-  inject: ["posts"],
   components: {
     [VueWordCloud.name]: VueWordCloud
   },
   computed: {
     tagsWords() {
-      const { tags } = this.posts;
-      return Object.keys(tags).map(tag => [tag, tags[tag].length]);
+      const _tags = Object.entries(PostBus.tags)
+      return [['all', 0], ..._tags]
     }
   },
   methods: {
     onWordClick(word) {
-      console.log(word)
+      this.$emit('on-word', word)
     }
   }
 };
 </script>
 <style lang="stylus">
 .tagcloud {
-  width: 280px;
-  height: 280px;
-  border: 1px solid #000;
+  width: 100%;
+  height: 100%;
 }
 </style>

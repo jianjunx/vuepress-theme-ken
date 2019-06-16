@@ -13,25 +13,25 @@
       <slot name="sidebar-top" slot="top"/>
       <slot name="sidebar-bottom" slot="bottom"/>
     </Sidebar>
-
-    <Home v-if="$page.frontmatter.home"/>
-
-    <Page v-else :sidebar-items="sidebarItems">
-      <slot name="page-top" slot="top"/>
-      <slot name="page-bottom" slot="bottom"/>
-    </Page>
+    <keep-alive>
+      <component v-bind:is="curComponent" :sidebar-items="sidebarItems">
+      </component>
+    </keep-alive>
+    <FooteBar />
   </div>
 </template>
 
 <script>
+import Posts from "@theme/components/Posts.vue";
 import Home from "@theme/components/Home.vue";
 import Navbar from "@theme/components/Navbar.vue";
 import Page from "@theme/components/Page.vue";
 import Sidebar from "@theme/components/Sidebar.vue";
+import FooteBar from "@theme/components/FooteBar.vue"
 import { resolveSidebarItems } from "../util";
 
 export default {
-  components: { Home, Page, Sidebar, Navbar },
+  components: { Posts, Home, Page, Sidebar, Navbar, FooteBar },
 
   data() {
     return {
@@ -40,6 +40,17 @@ export default {
   },
 
   computed: {
+    curComponent() {
+      const _switch = this.$page.frontmatter
+      switch (true) {
+        case _switch.home:
+          return 'Home'
+        case _switch.postList:
+          return 'Posts'
+        default :
+          return 'Page'
+      }
+    },
     shouldShowNavbar() {
       const { themeConfig } = this.$site;
       const { frontmatter } = this.$page;

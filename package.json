@@ -13,6 +13,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@vssue/api-github-v3": "^1.0.0",
+    "@vssue/vuepress-plugin-vssue": "^1.0.1",
     "@vuepress/plugin-active-header-links": "^1.0.0-rc.1",
     "@vuepress/plugin-last-updated": "^1.0.1",
     "@vuepress/plugin-nprogress": "^1.0.0-rc.1",
@@ -22,6 +24,7 @@
     "iview": "^3.4.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
+    "vssue": "^1.0.1",
     "vuepress": "^1.0.0",
     "vuepress-plugin-container": "^2.0.0",
     "vuewordcloud": "^18.7.11"

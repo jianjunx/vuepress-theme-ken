@@ -1,7 +1,6 @@
 ---
 title: JS判断一个对象是否为空
 permalink: /post/2019053101.html
-sidebar: auto
 tags:
  - JavaScript
 ---

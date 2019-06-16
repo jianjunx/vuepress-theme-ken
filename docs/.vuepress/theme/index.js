@@ -25,9 +25,7 @@ module.exports = (options, ctx) => ({
     [
       "@vuepress/last-updated",
       {
-        transformer: (timestamp) => {
-          return dayjs(timestamp).format("YYYY-MM-DD HH:mm:ss");
-        }
+        transformer: (timestamp) => timestamp
       }
     ],
     [

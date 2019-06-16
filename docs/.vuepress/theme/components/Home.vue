@@ -40,12 +40,6 @@
 
     <Content class="theme-content custom"/>
 
-    <div
-      class="footer"
-      v-if="data.footer"
-    >
-      {{ data.footer }}
-    </div>
   </main>
 </template>
 
@@ -73,7 +67,7 @@ export default {
 <style lang="stylus">
 .home
   padding $navbarHeight 2rem 0
-  max-width 960px
+  max-width 1110px
   margin 0px auto
   display block
   .hero
