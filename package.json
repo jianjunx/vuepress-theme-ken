@@ -1,16 +1,13 @@
 {
-  "name": "vuepress-theme-jkb",
-  "version": "1.0.0",
-  "description": "",
+  "name": "vuepress-theme-ken",
+  "version": "1.0.0-alpha.1",
+  "description": "this is a vuepress theme",
   "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
   "scripts": {
     "dev": "vuepress dev docs",
     "build": "vuepress build docs"
   },
-  "author": "",
+  "author": "jaykenxie",
   "license": "MIT",
   "dependencies": {
     "@vssue/api-github-v3": "^1.0.0",
@@ -21,7 +18,6 @@
     "@vuepress/plugin-search": "^1.0.0-rc.1",
     "dayjs": "^1.8.14",
     "docsearch.js": "^2.5.2",
-    "iview": "^3.4.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "vssue": "^1.0.1",
@@ -31,5 +27,18 @@
   },
   "devDependencies": {
     "babel-plugin-component": "^1.1.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaykenxie/vuepress-theme-ken.git"
+  },
+  "keywords": [
+    "vuepress",
+    "vue",
+    "theme"
+  ],
+  "bugs": {
+    "url": "https://github.com/recoluan/vuepress-theme-reco/issues"
+  },
+  "homepage": "https://www.jaykenxie.cn"
 }
