@@ -139,13 +139,16 @@ export default {
 
 <style src="prismjs/themes/prism-tomorrow.css"></style>
 <style lang="stylus">
-.homestyle {
+.theme-container .homestyle {
   background-color: transparent;
   border-bottom 0
   color #fff
 
   .links {
     visibility hidden  
+  }
+  .nav-link:hover {
+      color #fff !important
   }
 }
 </style>
