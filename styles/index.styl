@@ -1,4 +1,3 @@
-@require './palette'
 @require './config'
 @require './code'
 @require './custom-blocks'
@@ -9,9 +8,7 @@
 html, body
   padding 0
   margin 0
-  background-color $bodyBgColor
-  background-image url('~@theme/img/texture.png')
-
+  background-color: $bodyBgColor
 body
   font-family -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
   -webkit-font-smoothing antialiased
@@ -51,7 +48,6 @@ body
   margin 0
   top $navbarHeight
   left 0
-  // transform translateX(-625px)
   bottom 0
   box-sizing border-box
   border-right 1px solid $borderColor
@@ -60,7 +56,7 @@ body
 {$contentClass}:not(.custom)
   @extend $wrapper
   > *:first-child
-    margin-top $navbarHeight
+    // margin-top $navbarHeight
 
   a:hover
     text-decoration underline
@@ -132,10 +128,10 @@ h1, h2, h3, h4, h5, h6
     opacity: 1
 
 h1
-  font-size 2.2rem
+  font-size 1.8rem
 
 h2
-  font-size 1.65rem
+  font-size 1.5rem
   padding-bottom .3rem
   border-bottom 1px solid $borderColor
 
@@ -204,28 +200,14 @@ th, td
 @require 'mobile.styl'
 
 
-/************** 滚动条 **************/
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
 }
 
-::-webkit-scrollbar-track-piece {
-  background-color: rgba(20, 74, 116, 0.2);
-  -webkit-border-radius: 6px;
-}
-
-::-webkit-scrollbar-thumb:vertical {
-  height: 5px;
-  background-color: rgba(20, 74, 116, 0.7);
-  -webkit-border-radius: 6px;
-}
-
-::-webkit-scrollbar-thumb:horizontal {
-  width: 5px;
-  background-color: rgba(20, 74, 116, 0.7);
-  -webkit-border-radius: 6px;
-}
 
 /************** 流程图的滚动条 **************/
 .vuepress-flowchart {

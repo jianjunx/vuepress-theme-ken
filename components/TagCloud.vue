@@ -2,7 +2,7 @@
   <div class="tagcloud">
     <vue-word-cloud
       :words="tagsWords"
-      :color="([], i) => i%2 === 1 ? '#403030' : '#f97a7a'"
+      :color="([], i) => i%2 === 1 ? '#403030' : '#12904f'"
       font-family="Anton"
       :rotation="([],i)=> i%2 === 1 ? 90 : 0"
       rotation-unit="deg"

@@ -10,12 +10,10 @@
             :src="$withBase($site.themeConfig.logo)"
             :alt="$siteTitle"
           >
-          <span
-            ref="siteName"
-            class="site-name"
-            v-if="$siteTitle && !$site.themeConfig.logo"
-            :class="{ 'can-hide': $site.themeConfig.logo }"
-          >{{ $siteTitle }}</span>
+          
+          <div class="default-logo" v-if="!$site.themeConfig.logo">
+            <Icon size="40px" :type="isHome?'shuye2-copy':'shuye1'"/>
+          </div>
         </router-link>
         <NavLinks class="can-hide"/>
       </div>
@@ -39,16 +37,22 @@ import AlgoliaSearchBox from "@AlgoliaSearchBox";
 import SearchBox from "@SearchBox";
 import SidebarButton from "@theme/components/SidebarButton.vue";
 import NavLinks from "@theme/components/NavLinks.vue";
+import Icon from './Icon'
 
 export default {
-  components: { SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox },
+  components: { SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox, Icon },
 
   data() {
     return {
       linksWrapMaxWidth: null
     };
   },
-
+  props: {
+    isHome: {
+      type: Boolean,
+      default: false
+    }
+  },
   mounted() {
     const MOBILE_DESKTOP_BREAKPOINT = 719; // refer to config.styl
     const NAVBAR_VERTICAL_PADDING =
@@ -93,76 +97,55 @@ function css(el, property) {
 $navbar-vertical-padding = 0.7rem;
 $navbar-horizontal-padding = 1.5rem;
 
-.navbar {
-  padding: $navbar-vertical-padding $navbar-horizontal-padding;
-  line-height: $navbarHeight - 1.4rem;
-  background-color #144a74
-  box-shadow 0 0 5px rgba(0,0,0,.25)
+.navbar
+  padding $navbar-vertical-padding $navbar-horizontal-padding
+  line-height $navbarHeight - 1.4rem
+  a, span, img
+    display inline-block
+  .logo
+    height $navbarHeight - 1.4rem
+    min-width $navbarHeight - 1.4rem
+    margin-right 2rem
+    vertical-align top
+  .site-name
+    font-size 1.3rem
+    font-weight 600
+    color $textColor
+    position relative
+  .links
+    padding-left 1.5rem
+    box-sizing border-box
+    background-color white
+    white-space nowrap
+    font-size 0.9rem
+    right $navbar-horizontal-padding
+    top $navbar-vertical-padding
+    display flex
+    .search-box
+      flex: 0 0 auto
+      vertical-align top
+.navbar-wrap
+  width $wrapWidth
+  display flex
+  justify-content space-between
+  margin 0 auto
 
-  .navbar-wrap {
-    max-width: 1110px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    color #fff
+.default-logo
+  position relative
+  width 40px
+  height 1px
+  margin-right 20px
+  margin-left 10px
+  &>svg{
+    position absolute
+    top -22px
+    left 0  
   }
-
-  a, span, img {
-    display: inline-block;
-  }
-
-  .logo {
-    height: $navbarHeight - 1.4rem;
-    min-width: $navbarHeight - 1.4rem;
-    margin-right: 2rem;
-    vertical-align: top;
-  }
-
-  .site-name {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: $textColor;
-    position: relative;
-  }
-
-  .links {
-    padding-left: 1.5rem;
-    box-sizing: border-box;
-    background-color: transparent;
-    white-space: nowrap;
-    font-size: 0.9rem;
-    // position: absolute;
-    right: $navbar-horizontal-padding;
-    top: $navbar-vertical-padding;
-    display: flex;
-    // border 1px solid #000
-    // border-radius 6px
-    .search-box {
-      flex: 0 0 auto;
-      vertical-align: top;
-    }
-    .search-box input {
-      border-color $accentColor
-      background-color $bodyBgColor
-      &:focus {
-        border-color #ffa700
-      }
-    }
-        
-  }
-}
-
-@media (max-width: $MQMobile) {
-  .navbar {
-    padding-left: 4rem;
-
-    .can-hide {
-      display: none;
-    }
-
-    .links {
-      padding-left: 1.5rem;
-    }
-  }
-}
+@media (max-width: $MQMobile)
+  .navbar
+    padding-left 4rem
+    .can-hide
+      display none
+    .links
+      padding-left 1.5rem
 </style>

@@ -1,35 +1,37 @@
 <template>
   <div class="posts">
     <div class="left">
+      <div class="left-swiper">
+        <Swiper :banners=" $frontmatter.banners"/>
+      </div>
       <PostsList/>
     </div>
     <div class="right">
-      <div class="right-tag">
-        <h4 class="right-tag_title">
-          标签云：
-          <span>{{curTag}}</span>
-        </h4>
-        <div class="right-tag_tc">
-          <TagCloud @on-word="onWordHandler" />
+      <SideCard :title="`标签云：${curTag}`">
+        <div class="tags">
+          <TagCloud @on-word="onWordHandler"/>
         </div>
-      </div>
+      </SideCard>
     </div>
   </div>
 </template>
 <script>
 import PostsList from "./PostsList";
 import TagCloud from "./TagCloud";
-
+import SideCard from "./SideCard";
+import Swiper from './Swiper'
 export default {
   name: "posts",
   data: () => ({
-    curTag: "all"
+    curTag: "all",
   }),
-  components: { PostsList, TagCloud },
+  components: { PostsList, TagCloud, SideCard, Swiper },
+  computed: {
+  },
   methods: {
     onWordHandler(word) {
-      this.curTag = word
-      location.hash = word
+      this.curTag = word;
+      location.hash = word;
     }
   }
 };
@@ -37,42 +39,38 @@ export default {
 
 <style lang="stylus">
 .posts {
-  padding: $navbarHeight 2rem 0;
-  max-width: 1110px;
+  padding: $navbarHeight 2rem 1rem;
+  max-width: $wrapWidth;
   margin: 0 auto;
   display: flex;
 }
 
 .left {
-  flex: 1;
+  width : 810px;
+  background-color: #fff;
+  margin-top: 15px;
+  &-swiper {
+    width: 100%;
+    height: 226px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+}
+
+.slide-container {
+  background-color: #999;
+  width: 810px;
+  height: 280px;
 }
 
 .right {
   width: 280px;
   margin-left: 20px;
+  // margin-top 15px
 }
 
-.right-tag {
-  display: flex;
-  flex-direction: column;
+.tags {
   width: 100%;
-  height: 280px;
-  padding: 10px;
-  box-sizing: border-box;
-  background-color: #f5f7f4;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px 0 rgba(28, 31, 33, 0.1);
-
-  &_title {
-    font-size: 14px;
-    line-height: 0;
-  }
-
-  &_tc {
-    flex 1
-    border-top 1px solid #f1f1f1
-    box-sizing border-box
-    padding 10px
-  }
+  height: 200px;
 }
 </style>

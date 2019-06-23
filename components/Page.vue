@@ -1,22 +1,30 @@
 <template>
   <main class="page">
     <div class="page-left">
-      <slot name="top"/>
-      <Content class="theme-content"/>
-
-      <footer class="page-edit">
-        <div class="edit-link" v-if="editLink">
-          <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
-          <OutboundLink/>
+      <!-- <slot name="top"/> -->
+      <div class="page-content">
+        <div class="page-title">
+          <h3>{{$frontmatter.title}}</h3>
+          <div class="page-title_info">
+            <span class="page-title_author">
+            <img class="page-title_avatar" :src="$themeConfig.author.avatar" alt="">
+            <span>{{$themeConfig.author.name}}</span>
+          </span>
+          <span class="page-title_time">
+            <Icon type="time" size="16px"/>
+            <span>{{lastUpdated | formatDate}}</span>
+          </span>
+          </div>
         </div>
-
-        <div class="last-updated" v-if="lastUpdated">
-          <span class="prefix">{{ lastUpdatedText }}:</span>
-          <span class="time">{{ lastUpdated }}</span>
+        <Content class="theme-content"/>
+        <div class="page-foot">
+          <span v-for="tag in $frontmatter.tags" :key="tag">
+            <a :href="`/post/#${tag}`">#{{tag}}</a>
+          </span>
         </div>
-      </footer>
+      </div>
 
-      <div><Vssue :title="$page.title" /></div>
+      <div class="page-comment"><Vssue :title="$page.title" /></div>
       
       <div class="page-nav" v-if="prev || next">
         <p class="inner">
@@ -41,10 +49,13 @@
 
 <script>
 import { resolvePage, outboundRE, endingSlashRE } from "../util";
+import Icon from './Icon'
 import Toc from "./Toc";
+import { date } from '../util/date'
+
 export default {
   props: ["sidebarItems"],
-  components: { Toc },
+  components: { Toc, Icon },
   computed: {
     lastUpdated() {
       return this.$page.lastUpdated;
@@ -140,6 +151,12 @@ export default {
         path
       );
     }
+  },
+
+  filters: {
+    formatDate(t) {
+      return date(t).format('YYYY-MM-DD HH:mm:ss')
+    }
   }
 };
 
@@ -175,13 +192,59 @@ function flatten(items, res) {
 
 <style lang="stylus">
 @require '../styles/wrapper.styl';
-
 .page {
   padding-bottom: 2rem;
-  // display: block;
-  width: 1110px;
+  width: $wrapWidth;
   display: flex;
-  margin: 0 auto;
+  margin: $navbarHeight auto 0;
+  &-content{
+    background-color #fff  
+    margin-top 15px
+    a {
+      color $accentColor
+    }
+  }
+  &-title {
+    border-bottom 1px solid $borderColor
+    margin 0 30px  
+    box-sizing border-box
+    padding 20px 0
+    font-size 14px
+    &_info {
+      display flex
+      align-items center
+      justify-content space-between  
+    }
+    &_author{
+      display flex
+      align-items center  
+    }
+    &_avatar{
+      width 26px
+      height 26px  
+      border-radius 50%
+      margin-right 10px
+    }
+  }
+
+  &-foot{
+    padding 0 30px 20px
+    span {
+      padding-right 10px
+    }
+    a {
+      color #333
+      &:hover {
+        color $accentColor
+      }
+    }
+  }
+    
+  &-comment{
+    background-color #fff
+    margin-top 10px
+    padding 0 20px
+  }
 }
 
 .page-left {
@@ -189,7 +252,8 @@ function flatten(items, res) {
 }
 
 .page-right {
-  width: 280px;
+  width: 265px;
+  margin-left 15px
 }
 
 .page-edit {

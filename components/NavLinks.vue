@@ -126,7 +126,7 @@ export default {
   .nav-item
     position relative
     display inline-block
-    margin-left 2rem
+    margin-left 1.5rem
     line-height 2rem
     &:first-child
       margin-left 0
@@ -140,11 +140,27 @@ export default {
 
 @media (min-width: $MQMobile)
   .nav-links a
-    &:hover
-      color #ffa700 
-    &.router-link-active
+    &:hover, &.router-link-active
       color $textColor
   .nav-item > a:not(.external)
-    &:hover, &.router-link-active
-      color #ffa700       
+    &:hover::after
+      content ''
+      position absolute 
+      bottom -14px
+      left 0
+      width 100%
+      height 2px
+      background-color $accentColor
+    &.router-link-active
+      position relative
+      color $accentColor
+      margin-bottom -2px
+      &::after
+        content ''
+        position absolute 
+        bottom -18px
+        left 0
+        width 100%
+        height 1px
+        background-color $accentColor
 </style>

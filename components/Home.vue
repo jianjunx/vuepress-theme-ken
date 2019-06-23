@@ -1,18 +1,12 @@
 <template>
   <main class="home" aria-labelledby="main-title">
-    <header class="hero">
-      <img
-        v-if="data.heroImage"
-        :src="$withBase(data.heroImage)"
-        :alt="data.heroAlt || 'hero'"
-      >
-
-      <h1 v-if="data.heroText !== null" id="main-title">{{ data.heroText || $title || 'Hello' }}</h1>
-
-      <p class="description">
-        {{ data.tagline || $description || 'Welcome to your VuePress site' }}
-      </p>
-
+    <div class="home-banner" :style="{'background-image': `url('${data.banner}')`}">
+      <div class="home-banner_input">
+        <SearchBox />
+      </div>
+    </div>
+    <div class="home-wrap">
+      <header class="hero">
       <p
         class="action"
         v-if="data.actionText && data.actionLink"
@@ -39,15 +33,18 @@
     </div>
 
     <Content class="theme-content custom"/>
+    </div>
+    
 
   </main>
 </template>
 
 <script>
 import NavLink from '@theme/components/NavLink.vue'
+import SearchBox from "@SearchBox";
 
 export default {
-  components: { NavLink },
+  components: { NavLink, SearchBox },
 
   computed: {
     data () {
@@ -66,10 +63,36 @@ export default {
 
 <style lang="stylus">
 .home
-  padding $navbarHeight 2rem 0
-  max-width 1110px
-  margin 0px auto
+  padding 0
+  width 100%
   display block
+  &-banner{
+    width 100%
+    height 520px
+    // background-image url('http://pic46.nipic.com/20140817/7144451_144052790000_2.jpg') 
+    background-size cover
+    display flex
+    justify-content center
+    align-items center
+    
+    .home-banner_input input{
+        width 560px
+        height 38px
+        border-radius 6px
+        background-color transparent
+        background-position 35.5rem .66rem
+        &:focus {
+          border 1px solid #fff
+        }
+        // .suggestions {
+        //   width 560px
+        // }
+    }
+  }
+  &-wrap {
+     max-width $wrapWidth
+    margin 0px auto
+  }
   .hero
     text-align center
     img
@@ -91,7 +114,7 @@ export default {
       font-size 1.2rem
       color #fff
       background-color $accentColor
-      padding 0.8rem 1.6rem
+      padding 0.4rem 1.6rem
       border-radius 4px
       transition background-color .1s ease
       box-sizing border-box

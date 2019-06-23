@@ -9,20 +9,26 @@
         <h5>相关链接</h5>
         <ul class="flink">
           <li class="flink-wrap" v-for="link in $themeConfig.footer.links || []">
-            <a :href="link.target">{{link.name}}</a>
+            <a class="dedline" :href="link.target">{{link.name}}</a>
           </li>
         </ul>
       </div>
       <div class="footer-ctx-r">
-        <img class="footer-ctx-r_logo" :src="$withBase($themeConfig.logo)" alt="logo">
+        <img 
+          v-if="$themeConfig.logo" 
+          class="footer-ctx-r_logo" 
+          :src="$withBase($themeConfig.logo)" 
+          :alt="$siteTitle">
+        <Icon v-if="!$themeConfig.logo" type="shuye" size="60px"/>
       </div>
     </div>
     <div class="footer-info">
-      <a href="https://www.jayken.cn">&copy;Jayken.cn</a>
+      <a href="/">&copy;{{$themeConfig.copyRight}}</a>
       <i>&nbsp;·&nbsp;</i>
       <a href="https://v1.vuepress.vuejs.org">Vuepress</a>
       &nbsp;&nbsp;|&nbsp;&nbsp;
       <a
+        class="dedline"
         href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action"
         target="_blank"
       >{{$themeConfig.footer.beian}}</a>
@@ -30,8 +36,11 @@
   </footer>
 </template>
 <script>
+import Icon from './Icon'
+
 export default {
   name: "xfooter",
+  components: { Icon },
   methods: {
     jumpTo(to) {
       this.$router.push(to);
@@ -46,19 +55,19 @@ ul,li{
 }
 .footer {
   width: 100%;
-  background-color: #144a74;
+  background-color: #333;
   box-shadow: 0 0 5px rgba(0,0,0,.25)
   &-ctx {
-    max-width: 1110px;
+    max-width: $wrapWidth;
     display: flex;
-    color: #fff;
+    color: #999;
     margin: 0 auto;
-    border-bottom: 1px solid #f1f1f1;
+    border-bottom: 1px solid #666;
     padding-top: 20px;
     padding-bottom: 10px;
     font-size: 14px;
     h5 {
-      color: #ffa700;
+      color: #666;
     }
     &-l {
       height: 100%;
@@ -100,23 +109,22 @@ ul,li{
     width: 100%;
     height: 50px;
     font-size: 14px;
-    color: #fff;
+    color: #999;
     a {
-      color #fff
+      color #999
     }
   }
 }
 .flink {
-  // border: 1px solid #000;
-  // width: 248px;
   display: flex;
   flex-wrap: wrap;
   &-wrap {
     width: 110px;
-    // border: 1px solid #000;
     a {
-      color #fff
+      color #999
     }
   }
 }
+.dedline:hover
+  border-bottom 1px solid $accentColor
 </style>

@@ -1,11 +1,17 @@
 import PostBus from './util/post-bus';
+import { Carousel, CarouselItem, Pagination } from './node_modules/element-ui';
+import './node_modules/element-ui/lib/theme-chalk/index.css';
+
 export default ({
-  Vue, // VuePress 正在使用的 Vue 构造函数
-  options, // 附加到根实例的一些选项
-  router, // 当前应用的路由实例
+  Vue,
   siteData, // 站点元数据
 }) => {
-  // 加载elementui
+  // element ui
+  Vue.component(Carousel.name, Carousel);
+  Vue.component(CarouselItem.name, CarouselItem);
+  Vue.component(Pagination.name, Pagination);
+
+  // post
   const {
     themeConfig: { postPath = 'post' },
     pages,

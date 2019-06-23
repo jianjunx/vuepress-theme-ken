@@ -5,7 +5,11 @@
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
   >
-    <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar"/>
+    <Navbar 
+      v-if="shouldShowNavbar" 
+      :isHome="curComponent === 'Home'" 
+      :class="{homestyle: curComponent === 'Home'}" 
+      @toggle-sidebar="toggleSidebar"/>
 
     <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
 
@@ -29,6 +33,7 @@ import Page from "@theme/components/Page.vue";
 import Sidebar from "@theme/components/Sidebar.vue";
 import FooteBar from "@theme/components/FooteBar.vue"
 import { resolveSidebarItems } from "../util";
+import iconfont from '../icons/iconfont'
 
 export default {
   components: { Posts, Home, Page, Sidebar, Navbar, FooteBar },
@@ -98,6 +103,7 @@ export default {
   },
 
   mounted() {
+    iconfont(window);
     this.$router.afterEach(() => {
       this.isSidebarOpen = false;
     });
@@ -132,3 +138,15 @@ export default {
 </script>
 
 <style src="prismjs/themes/prism-tomorrow.css"></style>
+<style lang="stylus">
+.homestyle {
+  background-color: transparent;
+  border-bottom 0
+  color #fff
+
+  .links {
+    visibility hidden  
+  }
+}
+</style>
+
