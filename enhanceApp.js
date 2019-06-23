@@ -1,6 +1,6 @@
 import PostBus from './util/post-bus';
-import { Carousel, CarouselItem, Pagination } from './node_modules/element-ui';
-import './node_modules/element-ui/lib/theme-chalk/index.css';
+import { Carousel, CarouselItem, Pagination } from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
 export default ({
   Vue,
