@@ -7,6 +7,7 @@
       <PostsList/>
     </div>
     <div class="right">
+      <AuthorCard />
       <SideCard :title="`标签云：${curTag}`">
         <div class="tags">
           <TagCloud @on-word="onWordHandler"/>
@@ -20,14 +21,14 @@ import PostsList from "./PostsList";
 import TagCloud from "./TagCloud";
 import SideCard from "./SideCard";
 import Swiper from './Swiper'
+import AuthorCard from './AuthorCard'
+
 export default {
   name: "posts",
   data: () => ({
     curTag: "all",
   }),
-  components: { PostsList, TagCloud, SideCard, Swiper },
-  computed: {
-  },
+  components: { PostsList, TagCloud, SideCard, Swiper, AuthorCard },
   methods: {
     onWordHandler(word) {
       this.curTag = word;

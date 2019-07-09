@@ -1,5 +1,5 @@
 import PostBus from './util/post-bus';
-import { Carousel, CarouselItem, Pagination } from 'element-ui';
+import { Carousel, CarouselItem, Pagination, Icon } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 export default ({
@@ -10,6 +10,7 @@ export default ({
   Vue.component(Carousel.name, Carousel);
   Vue.component(CarouselItem.name, CarouselItem);
   Vue.component(Pagination.name, Pagination);
+  Vue.component(Icon.name, Icon);
 
   // post
   const {
