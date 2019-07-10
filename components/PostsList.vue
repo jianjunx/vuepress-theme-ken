@@ -110,6 +110,9 @@ ul, li {
 
   .plist-foot {
     font-size: 13px;
+    a {
+      margin-right 8px
+    }
   }
 }
 

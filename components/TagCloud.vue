@@ -2,12 +2,13 @@
   <div class="tagcloud">
     <vue-word-cloud
       :words="tagsWords"
-      :color="([], i) => i%2 === 1 ? '#403030' : '#12904f'"
+      :color="([], i) => i%2 === 1 ? '#403030' : '#1781b5'"
       font-family="Anton"
-      :rotation="([],i)=> i%2 === 1 ? 90 : 0"
+      :rotation="([],i)=> i%2 === 1 ? 45 : -45"
       rotation-unit="deg"
+      :font-size-ratio="3"
     >
-      <template slot-scope="{text, weight, word}">
+      <template slot-scope="{text, weight}">
         <div :title="weight" style="cursor: pointer;" @click="onWordClick(text)">{{ text }}</div>
       </template>
     </vue-word-cloud>
